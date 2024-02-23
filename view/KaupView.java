@@ -17,22 +17,20 @@ public class KaupView {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         UtilService util = UtilServiceImpl.getInstance();
-        double h = util.createRandomDouble(150, 50);
-        double w = util.createRandomDouble(30, 70);
         PersonDto person = new PersonBuilder()
-                .height(h)
-                .weight(w)
+                .height(util.createRandomDouble(150, 50))
+                .weight(util.createRandomDouble(30, 70))
                 .build();
+        KaupService kaup = KaupServiceImpl.getInstance(); //<- 이전 값 new KaupServiceImpl
+        String bmi = kaup.createBmi(person);
+        String bodyMass = kaup.createBodyMass(bmi);
+        System.out.printf("======== BMI 계산기 ========\n" +
+                        "Bmi : %s\n" +
+                        "체질량 : %s\n" +
+                        "=============================",
+                        bmi, bodyMass);
 
-        System.out.printf("키: %.1f mm, 몸무게 : %.1f ",person.getHeight(), person.getWeight());
-        KaupService service = KaupServiceImpl.getInstance();
 
-        double bmi = service.createBmi();
-        String bodyMass = service.createBodyMass();
-        System.out.println("======== BMI 계산기 ========");
-        System.out.printf("BMI : %.1f", bmi);
-        System.out.println();
-        System.out.println("체질량 : " + bodyMass);
-        System.out.println("======== BMI 계산기 ========");
+        //System.out.printf("키: %.1f mm, 몸무게 : %.1f ",person.getHeight(), person.getWeight());
     }
 }
