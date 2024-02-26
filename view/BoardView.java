@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class BoardView {
 
-    public static void main(String[] args) {
+    public static void main(Scanner sc) {
         List<BoardDto> articles = new ArrayList<>();
         UtilService util = UtilServiceImpl.getInstance();
         BoardDto article = new BoardBuilder()

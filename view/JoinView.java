@@ -2,20 +2,20 @@ package view;
 
 import builder.PersonBuilder;
 import model.PersonDto;
+import service.AuthService;
 import service.KaupService;
 import service.UtilService;
+import serviceImpl.AuthServiceImpl;
 import serviceImpl.KaupServiceImpl;
 import serviceImpl.UtilServiceImpl;
 
 import java.util.Scanner;
 
 public class JoinView {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(Scanner sc) {
         System.out.println("id, 비밀번호, 확인비밀번호, " +
                 "이름, 주민번호, 전화번호, 주소, 직업");
-        //int a = 0;
-
+        AuthService auth = AuthServiceImpl.getInstance();
         PersonDto personDto = new PersonBuilder()
                 .id(sc.next())
                 .password(sc.next())

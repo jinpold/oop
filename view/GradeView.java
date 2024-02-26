@@ -12,18 +12,11 @@ import serviceImpl.UtilServiceImpl;
 import java.util.Scanner;
 
 public class GradeView {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(Scanner sc) {
+        System.out.println("이름 입력하세요");
+
         UtilService util = UtilServiceImpl.getInstance();
         GradeService grade = GradeServiceImpl.getInstance();
-        System.out.println("점수 입력");
-        System.out.println("이름: ");
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println("평균 점수를 구하시오");
-
-
         PersonDto student = new PersonBuilder()
                 .name(sc.next())
                 .build();
@@ -33,11 +26,7 @@ public class GradeView {
                 .english(util.createRandomInteger(0,100))
                 .math(util.createRandomInteger(0,100))
                 .build();
-        SubjectDto subjectDto = new SubjectBuilder()
-                .korean(sc.nextInt()) // = sub.korean()
-                .english(sc.nextInt())
-                .math(sc.nextInt())
-                .build();
+
         int totalScore = grade.getTotalScore(subjects);
         double average = grade.findAverage(totalScore);
 
@@ -46,17 +35,13 @@ public class GradeView {
                 " korean : %s \n" +
                 " English : %s \n" +
                 " Math : %s \n " +
-                "Total : %s \n" +
-                "Average : %s",
-                String.valueOf(subjects.getKorean()),
-                String.valueOf(subjects.getEnglish()),
-                String.valueOf(subjects.getMath()),
-                String.valueOf(totalScore),
-                String.valueOf(average));
+                "Total : %d \n" +
+                "Average : %.1f",
+                student.getName(),
+                subjects.getEnglish(),
+                subjects.getMath(),
+                subjects.getKorean(),
+                totalScore,average);
 
-
-
-        System.out.println(subjectDto.toString());
-                       // 생성자.toString 불러오기 (get/set)
     }
 }

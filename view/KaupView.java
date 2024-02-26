@@ -14,8 +14,7 @@ import java.util.Scanner;
 // static String test; -> 필드가 아니라 상수
 
 public class KaupView {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(Scanner sc) {
         UtilService util = UtilServiceImpl.getInstance();
         PersonDto person = new PersonBuilder()
                 .height(util.createRandomDouble(150, 50))
