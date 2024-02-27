@@ -30,9 +30,9 @@ public class UtilServiceImpl implements UtilService {
 
     @Override
     public String createRandomTitle() {
-        String[] title ={"국가","헌법개정안","사법권","헌법재판소",
-                "국회","국교","법관","국무총리","환경권","체포"};
-        return title[createRandomInteger(0,9)];
+        String[] title = {"국가", "헌법개정안", "사법권", "헌법재판소",
+                "국회", "국교", "법관", "국무총리", "환경권", "체포"};
+        return title[createRandomInteger(0, 9)];
     }
 
     @Override
@@ -48,7 +48,7 @@ public class UtilServiceImpl implements UtilService {
                 "법관은 탄핵 또는 금고 이상의 형의 선고에 의하지 아니하고는 파면되지 아니하며, 징계처분에 의하지 아니하고는 정직·감봉 기타 불리한 처분을 받지 아니한다.",
                 "국무총리는 국회의 동의를 얻어 대통령이 임명한다. 대통령은 내우·외환·천재·지변 또는 중대한 재정·경제상의 위기에 있어서 국가의 안전보장 또는 공공의 안녕질서를 유지하기 위하여 긴급한 조치가 필요하다",
         };
-        return content[createRandomInteger(0,9)];
+        return content[createRandomInteger(0, 9)];
 
     }
 
@@ -56,16 +56,37 @@ public class UtilServiceImpl implements UtilService {
     public String createRandomWriter() {
         String[] names = {"이정재", "마동석", "송강호", "윤여정", "황정민", "정우성", "이병헌", "현 빈", "유해진", "손석구", "전도연", "손예진", "하지원", "김하늘",
                 "송중기", "하정우", "장동건", "원 빈", "박해일", "소지섭", "김혜"};
-        return names[createRandomInteger(0,20)];
+        return names[createRandomInteger(0, 20)];
 
     }
+
     @Override
     public String createRandomCompany() {
-        String[] companies = {"구글", "엔비디아", "메타", "삼성", "LG","애플", "네이버", "넷플릭스", "쿠팡"};
-                return companies[createRandomInteger(0,8)];
+        String[] companies = {"구글", "엔비디아", "메타", "삼성", "LG", "애플", "네이버", "넷플릭스", "쿠팡"};
+        return companies[createRandomInteger(0, 8)];
     }
 
+    public String createRandomUsername() {
+        String username = "";
+        for (;
+             username.length() < 5;
+             username += String.valueOf((char) ('a' + this.createRandomInteger(0, 26)))) ;
+                                                 // 아스키 코드표 'a' = 97 따라서 97+0 'a', 'b' = 98  (97 + 1) 여기서 1은
+                                                 // -------------> for문  username.length() => i 인덱스이다.
+        return username;
+    }
 }
+//        String[] character= {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k",
+//                "l", "m", "n", "o", "p", "q", "r" ,"s", "t", "u", "v", "w" ,"x" ,"y", "z"};
+//        String usermame = "";
+//        for (int i = 0; i < 5; i++) {
+//
+//            character[i] = character[createRandomInteger(0,26)];
+//            usermame += character[i];
+//
+//        } return usermame;
+//    }
+//}
 
 
 

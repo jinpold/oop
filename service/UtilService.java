@@ -13,6 +13,8 @@ public interface UtilService {
 
     String createRandomCompany();
 
+    String createRandomUsername();
+
 }
 
 

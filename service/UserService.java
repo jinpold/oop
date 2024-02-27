@@ -3,30 +3,18 @@ package service;
 import model.PersonDto;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
 
-public interface AuthService {
+public interface UserService {
 
-    String join(Scanner sc);
-
-    String login();
-
-    String addUsers();
-
-    PersonDto findUser(String username);
-
-    Map<String, PersonDto> getUserMap();
-
-    String count();
     String join(PersonDto user);
     String login(PersonDto user);
-    PersonDto findUserById(String username);
+    PersonDto findUser(String username);
     String updatePassword(PersonDto user);
     String deleteUser(String username);
     List<PersonDto> getUserList();
     List<PersonDto> findUsersByName(String name);
+    List<PersonDto> findUsersById(String id);
     List<PersonDto> findUsersByJob(String job);
     String countUsers();
-
 }
+

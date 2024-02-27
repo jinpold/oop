@@ -3,7 +3,7 @@ package builder;
 import model.PersonDto;
 
 public class PersonBuilder {
-    private String id;
+    private String userName;
     private String password;
     private String checkPassword;
     private String name;
@@ -16,8 +16,8 @@ public class PersonBuilder {
 
     private double weight;
 
-    public PersonBuilder id(String id) {
-        this.id = id;
+    public PersonBuilder userName(String userName) {
+        this.userName = userName;
         return this;
     }
 
@@ -67,7 +67,7 @@ public class PersonBuilder {
     }
 
     public PersonDto build(){
-        return new PersonDto(id, password, checkPassword, name, personNumber,
+        return new PersonDto(userName, password, checkPassword, name, personNumber,
                 phoneNumber, address, job, height, weight);
     }
 }
