@@ -19,6 +19,8 @@ public interface AuthService {
     Map<String, PersonDto> getUserMap();
 
     String count();
+
+    // 아래는 추가로 확인해야함.
     String join(PersonDto user);
     String login(PersonDto user);
     PersonDto findUserById(String username);

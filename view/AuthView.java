@@ -7,6 +7,7 @@ import model.PersonDto;
 import service.AuthService;
 import serviceImpl.AuthServiceImpl;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class AuthView {
@@ -27,8 +28,7 @@ public class AuthView {
                     System.out.println(authController.join(sc));
                     break;
                 case "2":
-                    System.out.println("[회원목록]");
-                    authController.getUserMap();
+
                     System.out.println("2-로그인");
                     System.out.println(authController.login(sc));
                     break;

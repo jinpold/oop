@@ -3,18 +3,22 @@ package service;
 import model.PersonDto;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 public interface UserService {
 
-    String join(PersonDto user);
+    String addUsers();
+    String count();
+    String join(Scanner sc);
+    Map<String, PersonDto> getUserMap();
     String login(PersonDto user);
-    PersonDto findUser(String username);
+    String findUserById(PersonDto username);
     String updatePassword(PersonDto user);
     String deleteUser(String username);
-    List<PersonDto> getUserList();
     List<PersonDto> findUsersByName(String name);
-    List<PersonDto> findUsersById(String id);
     List<PersonDto> findUsersByJob(String job);
-    String countUsers();
+
+
 }
 

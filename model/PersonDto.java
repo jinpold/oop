@@ -114,7 +114,7 @@ public class PersonDto {
     @Override
     public String toString() {
         return "PersonDto{" +
-                "id='" + username + '\'' +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", checkPassword='" + checkPassword + '\'' +
                 ", name='" + name + '\'' +
@@ -122,8 +122,6 @@ public class PersonDto {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", address='" + address + '\'' +
                 ", job='" + job + '\'' +
-                ", height=" + height +
-                ", weight=" + weight +
                 '}';
     }
 }
