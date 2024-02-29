@@ -1,6 +1,6 @@
 package service;
 
-import model.PersonDto;
+import model.UserDto;
 
 import java.util.List;
 import java.util.Map;
@@ -14,21 +14,21 @@ public interface AuthService {
 
     String addUsers();
 
-    PersonDto findUser(String username);
+    UserDto findUser(String username);
 
-    Map<String, PersonDto> getUserMap();
+    Map<String, UserDto> getUserMap();
 
     String count();
 
     // 아래는 추가로 확인해야함.
-    String join(PersonDto user);
-    String login(PersonDto user);
-    PersonDto findUserById(String username);
-    String updatePassword(PersonDto user);
+    String join(UserDto user);
+    String login(UserDto user);
+    UserDto findUserById(String username);
+    String updatePassword(UserDto user);
     String deleteUser(String username);
-    List<PersonDto> getUserList();
-    List<PersonDto> findUsersByName(String name);
-    List<PersonDto> findUsersByJob(String job);
+    List<UserDto> getUserList();
+    List<UserDto> findUsersByName(String name);
+    List<UserDto> findUsersByJob(String job);
     String countUsers();
 
 }

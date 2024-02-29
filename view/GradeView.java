@@ -1,8 +1,8 @@
 package view;
 
-import builder.PersonBuilder;
+import builder.UserBuilder;
 import builder.SubjectBuilder;
-import model.PersonDto;
+import model.UserDto;
 import model.SubjectDto;
 import service.GradeService;
 import service.UtilService;
@@ -17,7 +17,7 @@ public class GradeView {
 
         UtilService util = UtilServiceImpl.getInstance();
         GradeService grade = GradeServiceImpl.getInstance();
-        PersonDto student = new PersonBuilder()
+        UserDto student = new UserBuilder()
                 .name(sc.next())
                 .build();
 

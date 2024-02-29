@@ -1,13 +1,7 @@
 package view;
 
-import builder.PersonBuilder;
 import controller.AuthController;
-import controller.UserController;
-import model.PersonDto;
-import service.AuthService;
-import serviceImpl.AuthServiceImpl;
 
-import java.util.Map;
 import java.util.Scanner;
 
 public class AuthView {

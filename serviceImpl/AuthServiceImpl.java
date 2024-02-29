@@ -1,12 +1,10 @@
 package serviceImpl;
 
-import builder.PersonBuilder;
-import model.PersonDto;
+import builder.UserBuilder;
+import model.UserDto;
 import service.AuthService;
-import service.KaupService;
 import service.UtilService;
 
-import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +16,7 @@ public class AuthServiceImpl implements AuthService {
 
     private static AuthService instance = new AuthServiceImpl();
 
-    Map<String, PersonDto> users;
+    Map<String, UserDto> users;
 
     private AuthServiceImpl() {
         this.users = new HashMap<>();
@@ -34,7 +32,7 @@ public class AuthServiceImpl implements AuthService {
     public String join(Scanner sc) {
         System.out.println("아이디, 비밀번호, 비밀번호확인, 이름, 주민번호, 전화번호, " +
                 "주소, 직업을 입력하세요");
-        PersonDto person = new PersonBuilder()
+        UserDto person = new UserBuilder()
                 .userName(sc.next())
                 .password(sc.next())
                 .checkPassword(sc.next())
@@ -62,8 +60,8 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public PersonDto findUser(String name) {
-        PersonDto user = new PersonBuilder().build();
+    public UserDto findUser(String name) {
+        UserDto user = new UserBuilder().build();
 
         return user;
     }
@@ -72,11 +70,11 @@ public class AuthServiceImpl implements AuthService {
     public String addUsers() {
         System.out.println("====== addUsers 서비스 로직 수행 시작 ======");
         UtilService util = UtilServiceImpl.getInstance();
-        Map<String, PersonDto> map = new HashMap<>();
+        Map<String, UserDto> map = new HashMap<>();
 
         for (int i = 0; i < 5; i++) {
             String username = util.createRandomUsername();
-            map.put(username, new PersonBuilder()
+            map.put(username, new UserBuilder()
                     .userName(username)
                     .password("1")
                     .checkPassword("1")
@@ -90,7 +88,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public Map<String, PersonDto> getUserMap() {
+    public Map<String, UserDto> getUserMap() {
         users.forEach((k,v)-> System.out.print("{"+k+","+v+"},"));
         return users; // map을 컨트롤러로 보냄.
     }
@@ -100,24 +98,24 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public String join(PersonDto user) {
+    public String join(UserDto user) {
         users.put(user.getUsername(), user);
         return "회원가입 성공";
     }
 
     @Override
-    public String login(PersonDto user) {
+    public String login(UserDto user) {
         return null;
     }
 
     @Override
-    public PersonDto findUserById(String username) {
+    public UserDto findUserById(String username) {
         System.out.println("검색할 ID 입력: ");
         return null;
     }
 
     @Override
-    public String updatePassword(PersonDto user) {
+    public String updatePassword(UserDto user) {
         return null;
     }
 
@@ -127,17 +125,17 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public List<PersonDto> getUserList() {
+    public List<UserDto> getUserList() {
         return null;
     }
 
     @Override
-    public List<PersonDto> findUsersByName(String name) {
+    public List<UserDto> findUsersByName(String name) {
         return null;
     }
 
     @Override
-    public List<PersonDto> findUsersByJob(String job) {
+    public List<UserDto> findUsersByJob(String job) {
         return null;
     }
 

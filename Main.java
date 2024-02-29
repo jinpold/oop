@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (true) {
-            System.out.println("\n 0-종료 1-회원관리 2-성적표 3- 게시판 4-카우프 5-사용자관리(맵)");
+            System.out.println("\n 0-종료 1-회원관리 2-성적표 3- 게시판 4-카우프 5-사용자관리(맵) 6-Account관리");
             // 이 프로젝트에는 현재 4개의 기능이 구현이 되어 있다.
             System.out.println("목록중에 원하시는걸 선택하세요");
             switch (sc.next()) {
@@ -20,6 +20,7 @@ public class Main {
                 case "3": BoardView.main(sc); break;
                 case "4": KaupView.main(sc);  break;
                 case "5": UserView.main(sc);  break;
+                case "6": AccountView.main(sc); break;
             }
         }
     }

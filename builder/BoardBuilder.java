@@ -1,7 +1,6 @@
 package builder;
 
 import model.BoardDto;
-import model.PersonDto;
 
 public class BoardBuilder {
 

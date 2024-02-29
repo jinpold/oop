@@ -1,7 +1,7 @@
 package view;
 
-import builder.PersonBuilder;
-import model.PersonDto;
+import builder.UserBuilder;
+import model.UserDto;
 import service.KaupService;
 import service.UtilService;
 import serviceImpl.KaupServiceImpl;
@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class KaupView {
     public static void main(Scanner sc) {
         UtilService util = UtilServiceImpl.getInstance();
-        PersonDto person = new PersonBuilder()
+        UserDto person = new UserBuilder()
                 .height(util.createRandomDouble(150, 50))
                 .weight(util.createRandomDouble(30, 70))
                 .build();

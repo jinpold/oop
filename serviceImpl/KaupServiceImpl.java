@@ -1,8 +1,7 @@
 package serviceImpl;
 
-import model.PersonDto;
+import model.UserDto;
 import service.KaupService;
-import service.UtilService;
 
 public class KaupServiceImpl implements KaupService {
 
@@ -16,7 +15,7 @@ public class KaupServiceImpl implements KaupService {
     }
 
     @Override
-    public String createBmi(PersonDto person) {
+    public String createBmi(UserDto person) {
         double height = person.getHeight();
         double weight = person.getWeight();
         double bmi = Math.round(weight / ((height / 100) * (height / 100)));

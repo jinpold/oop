@@ -1,6 +1,5 @@
 package builder;
 
-import model.PersonDto;
 import model.SubjectDto;
 
 public class SubjectBuilder {
