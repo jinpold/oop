@@ -1,9 +1,7 @@
 package view;
 
 import controller.UserController;
-import model.UserDto;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class UserView {

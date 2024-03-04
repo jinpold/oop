@@ -1,7 +1,6 @@
 package controller;
 
-import builder.UserBuilder;
-import model.UserDto;
+import model.User;
 import service.UserService;
 import serviceImpl.UserServiceImpl;
 
@@ -37,7 +36,7 @@ public class UserController {
         return " 회원가입 : " + userService.join(sc);
     }
 
-    public Map<String, UserDto> getUserMap() {
+    public Map<String, User> getUserMap() {
         System.out.println("전체 목록 출력");
         return userService.getUserMap();
 
@@ -45,39 +44,39 @@ public class UserController {
 
     public String login(Scanner sc){
         System.out.println("id와 pw를 입력하세요");
-        return userService.login(new UserBuilder()
-                .userName(sc.next())
+        return userService.login(User.builder()
+                .username(sc.next())
                 .password(sc.next())
                 .build());
     }
     public String findUserById(Scanner sc) {
         System.out.println("검색할 ID 입력 : ");
-        return userService.findUserById(new UserBuilder()
-                .userName(sc.next())
+        return userService.findUserById(User.builder()
+                .username(sc.next())
                 .build());
     }
 
     public String updatePassword(Scanner sc) {
         System.out.println("아이디와 변경할 비밀번호 입력 : ");
-        return userService.updatePassword(new UserBuilder()
-                .userName(sc.next())
+        return userService.updatePassword(User.builder()
+                .username(sc.next())
                 .password(sc.next())
                 .build());
     }
     public String deleteUser(Scanner sc) {
         System.out.println("탈퇴할 아이디를 적어주세요 : ");
-        return userService.updatePassword(new UserBuilder()
-                .userName(sc.next())
+        return userService.updatePassword(User.builder()
+                .username(sc.next())
                 .password(sc.next())
                 .build());
     }
 
-    public List<UserDto> findUsersByName(Scanner sc) {
+    public List<?> findUsersByName(Scanner sc) {
         System.out.println("이름으로 검색");
         return userService.findUsersByName(sc.next());
     }
 
-    public List<UserDto> findUsersByJob(Scanner sc) {
+    public List<?> findUsersByJob(Scanner sc) {
         System.out.println("직업으로 검색");
         return userService.findUsersByJob(sc.next());
     }

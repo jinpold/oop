@@ -1,6 +1,5 @@
 package serviceImpl;
-import builder.UserBuilder;
-import model.UserDto;
+import model.User;
 import service.UserService;
 import service.UtilService;
 
@@ -14,33 +13,32 @@ public class UserServiceImpl implements UserService {
     // -> 필드이므로 메모리 점유
     // -> 아래와 같이 생성자 만들고 담기
 
-    Map<String, UserDto> users;
+    Map<String, User> users;
     //서비스임플에서 맵 ~ ; 은 객체가 아니다. 요소로 격하된다.
+    List<?> userList;
 
     private UserServiceImpl() {
         this.users = new HashMap<>();
+        this.userList = new ArrayList<>();
     }
-
     public static UserService getInstance() {
         return instance;
     }
 
     @Override
     public String addUsers() {
-        //System.out.println("====== addUsers 서비스 로직 수행 시작 ======");
         UtilService util = UtilServiceImpl.getInstance();
-        Map<String, UserDto> map = new HashMap<>();
+        Map<String, User> map = new HashMap<>();
         for (int i = 0; i < 5; i++) {
             String username = util.createRandomUsername();
-            map.put(username, new UserBuilder()
-                    .userName(username)
+            map.put(username, User.builder()
+                    .username(username)
                     .password("1")
                     .checkPassword("1")
                     .name(util.createRandomWriter())
                     .build());
         }
         users = map;
-        //System.out.println("====== addUsers 서비스 로직 수행 끝 ======");
         return users.size() + "개 더미추가";
     }
 
@@ -54,8 +52,8 @@ public class UserServiceImpl implements UserService {
     public String join(Scanner sc) {
         System.out.println("아이디, 비밀번호, 비밀번호확인, 이름, 주민번호, 전화번호, " +
                 "주소, 직업을 입력하세요");
-        UserDto person = new UserBuilder()
-                .userName(sc.next())
+        User person = User.builder()
+                .username(sc.next())
                 .password(sc.next())
                 .checkPassword(sc.next())
                 .name(sc.next())
@@ -77,7 +75,7 @@ public class UserServiceImpl implements UserService {
         return result;
     }
 
-    public Map<String, UserDto> getUserMap() {
+    public Map<String, User> getUserMap() {
         users.forEach((k, v) -> System.out.println("{" + k + "," + v + "}"));
         // 맵은 k,v 람다식 활용한다 ( "주의" 람다식 활용하면 출력 시 sout을 사용하지 말것)
         return users; // 맵을 컨트롤러로 보낸다.
@@ -86,8 +84,8 @@ public class UserServiceImpl implements UserService {
     @Override
 
     // users -> 맵의 키값 (현재 회원정보 6개 담김)
-    public String login(UserDto user) {
-        UserDto userInMap = users.get(user.getUsername()); // 6개에 담긴 아이디와 로그인 한 아이디의 일치여부 확인
+    public String login(User user) {
+        User userInMap = users.get(user.getUsername()); // 6개에 담긴 아이디와 로그인 한 아이디의 일치여부 확인
         // userInMap이 user의 요소인 엔트리(객체)가 된다 <- 좌측의 맵 users에서 꺼낸 객체
         String msg = "";
         if (userInMap == null) { // 6개중에 아아디가 없어서 로그인 실패 => null 적용
@@ -105,8 +103,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String findUserById(UserDto usr) {
-        UserDto userInMap = users.get(usr.getUsername()); // 6개에 담긴 아이디와 로그인 한 아이디의 일치여부 확인
+    public String findUserById(User usr) {
+        User userInMap = users.get(usr.getUsername()); // 6개에 담긴 아이디와 로그인 한 아이디의 일치여부 확인
         // 함수식 userInMap = 엔트리 -> 맵에 들어있는 DTO 하나 => userInmap (객체가 1개 담김)
         // 1) usr.getUsername은 필드 DTO값이다 (리턴이 되는 값 => 회원 가입 시 입력한 정보)
         // 2) user.getUsername() 필드 DTO값이 담기는 순간은 객체이고 -> 좌측에 userInMap= <- 으로 넘어가서 담기면 엔트리가 된다.
@@ -123,9 +121,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String updatePassword(UserDto user) {
+    public String updatePassword(User user) {
         //users.get(user.getUsername()).getPassword() -> 활용해서 다시 로직 짜보기
-        UserDto dpw = users.get(user.getUsername());
+        User dpw = users.get(user.getUsername());
         String msg = "";
         if (dpw != null) {
             dpw.setPassword((user.getPassword()));
@@ -135,8 +133,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String deleteUser(UserDto user) {
-        UserDto userInMap = users.get(user.getUsername());
+    public String deleteUser(User user) {
+        User userInMap = users.get(user.getUsername());
         String msg = ""; // 비밀번호도 입력
         if (userInMap != null) {
             if (userInMap.getPassword().equals(user.getPassword())) {
@@ -156,9 +154,8 @@ public class UserServiceImpl implements UserService {
 //        }
 
     @Override
-    public List<UserDto> findUsersByName(String name) {
-        List<UserDto> usersList = new ArrayList<>(users.values());
-
+    public List<User> findUsersByName(String name) {
+        List<User> usersList = new ArrayList<>(users.values());
 
         for( String list : users.keySet())
             System.out.println(list+" ");
@@ -168,11 +165,12 @@ public class UserServiceImpl implements UserService {
         return null;
     }
     @Override
-    public List<UserDto> findUsersByJob(String job) {
+    public List<User> findUsersByJob(String job) {
         return null;
     }
     @Override
-    public List<UserDto> getUserlist() {
+    public List<User> getUserlist() {
         return new ArrayList<>(users.values());
+
     }
 }

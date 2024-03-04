@@ -8,6 +8,7 @@ public class Main {
 
     //파사드 패턴 - 진입로를 하나로 들어가는 것
     public static void main(String[] args) {
+        // 메인 메서드 static (변하지 않는 객체) 프로젝트에 단 하나 the one
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.println("\n 0-종료 1-회원관리 2-성적표 3- 게시판 4-카우프 5-사용자관리(맵) 6-Account관리");

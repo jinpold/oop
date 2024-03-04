@@ -1,9 +1,6 @@
 package view;
 import controller.AccountController;
-import controller.UserController;
-import model.AccountDto;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class AccountView {
