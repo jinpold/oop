@@ -36,7 +36,7 @@ public class UserController {
         return " 회원가입 : " + userService.join(sc);
     }
 
-    public Map<String, User> getUserMap() {
+    public Map<String, ?> getUserMap() {
         System.out.println("전체 목록 출력");
         return userService.getUserMap();
 

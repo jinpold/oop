@@ -26,9 +26,9 @@ public interface AuthService {
     User findUserById(String username);
     String updatePassword(User user);
     String deleteUser(String username);
-    List<User> getUserList();
-    List<User> findUsersByName(String name);
-    List<User> findUsersByJob(String job);
+    List<?> getUserList();
+    List<?> findUsersByName(String name);
+    List<?> findUsersByJob(String job);
     String countUsers();
 
 }

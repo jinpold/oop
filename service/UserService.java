@@ -11,7 +11,7 @@ public interface UserService {
     String addUsers();
     String count();
     String join(Scanner sc);
-    Map<String, User> getUserMap();
+    Map<String, ?> getUserMap();
     String login(User user);
     String findUserById(User username);
     String updatePassword(User user);
