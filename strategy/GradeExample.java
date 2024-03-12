@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.function.Predicate;
 
-enum Grade {
+enum Grade { //전략 패턴   속성 final  기능 static  둘다 상수 => 전략패턴
     A(i -> i >= 9 && i == 10),
     B(i -> i >= 8 && i < 9),
     C(i -> i >= 7 && i < 8),
@@ -22,6 +22,7 @@ enum Grade {
         return Arrays.stream(values())
                 .filter(o -> o.predicate.test(score/10))
                 .findFirst().orElseThrow(() -> new IllegalArgumentException("올바른 값이 아닙니다."))
+                // 위의 findFist는 arr[0]번에 던진다는 의미
                 .toString();
     }
 }
